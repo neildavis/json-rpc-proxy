@@ -60,7 +60,7 @@ class ViewController: UIViewController, JRPCProxyTransport {
         var initialNumbers :[Int] = [Int]()
         while initialNumbers.count < 6 {
             let newNum = Int(arc4random_uniform(UInt32(self.maxNumberSlider.value))) + 1
-            if initialNumbers.index(of: newNum) == nil {
+            if initialNumbers.firstIndex(of: newNum) == nil {
                 initialNumbers.append(newNum)
             }
         }
@@ -87,10 +87,12 @@ class ViewController: UIViewController, JRPCProxyTransport {
         self.randomService?.generateIntegers(apiKey: apiKey, n: 6,
                                              min: BallView.minBallNumber, max: Int(self.maxNumberSlider.value),
                                              replacement: false,
-                                             completion: { (newNumbers, error) in
+                                             completion: { [weak self] (newNumbers, error) in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false;
+            guard let self = self else { return }
+
             if let newNumbers = newNumbers as? [Int] {
-                ballSelectionView.numbers = newNumbers.sorted()
+                self.ballSelectionView.numbers = newNumbers.sorted()
             } else if let error = error {
                 let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

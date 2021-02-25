@@ -33,7 +33,7 @@ import Foundation
 // https://api.random.org/json-rpc/1/basic
 // We just create a protocol to match the methods and use the JSON-RPC proxy ...
 @objc protocol RandomDotOrgService {
-    func generateIntegers(apiKey key:String, n num:Int, min minNum:Int, max maxInt:Int, replacement replace:Bool, completion completionBlock:(NSArray?, NSError?)->Void)
+    func generateIntegers(apiKey key:String, n num:Int, min minNum:Int, max maxInt:Int, replacement replace:Bool, completion completionBlock: @escaping (NSArray?, NSError?)->Void)
 }
 
 // We add an extension to Array to allow the proxy to extract the result from response
