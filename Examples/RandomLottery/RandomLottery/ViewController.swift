@@ -56,7 +56,15 @@ class ViewController: UIViewController, JRPCProxyTransport {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Use device for initial set of random numbers
+        
+        // Setup controls
+        let kNumBalls = 6
+        self.maxNumberSlider.minimumValue = Float(kNumBalls)
+        self.maxNumberSlider.maximumValue = Float(BallView.maxBallNumber)
+        self.maxNumberSlider.value = Float(self.defaultMaxNumber)
+        self.didChangeMaxValue(self.maxNumberSlider)
+
+        // Use OS random number generator for initial set of random numbers
         var initialNumbers :[Int] = [Int]()
         while initialNumbers.count < 6 {
             let newNum = Int(arc4random_uniform(UInt32(self.maxNumberSlider.value))) + 1
@@ -65,12 +73,6 @@ class ViewController: UIViewController, JRPCProxyTransport {
             }
         }
         ballSelectionView.numbers = initialNumbers.sorted()
-        
-        // Setup controls
-        self.maxNumberSlider.minimumValue = Float(self.ballSelectionView.numbers.count)
-        self.maxNumberSlider.maximumValue = Float(BallView.maxBallNumber)
-        self.maxNumberSlider.value = Float(self.defaultMaxNumber)
-        self.didChangeMaxValue(self.maxNumberSlider)
     }
 
     //MARK: Actions
