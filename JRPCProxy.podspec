@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'JRPCProxy'
-  s.version          = '1.0.0'
+  s.version          = '1.1.0'
   s.summary          = 'An implmentation of the JSON-RPC 2.0 specification for Objective-C protocols.'
 
 

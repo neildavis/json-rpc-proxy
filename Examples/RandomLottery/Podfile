@@ -1,6 +1,6 @@
 use_frameworks!
 
 target 'RandomLottery' do
-  platform :ios, '11.0'
+  platform :ios, '12.2'
   pod 'JRPCProxy', :path => '../../'
 end

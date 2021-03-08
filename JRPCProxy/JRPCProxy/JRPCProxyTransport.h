@@ -27,7 +27,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
+#import "JRPCCancellable.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -59,11 +59,12 @@ typedef void (^JRPCTransportObjectCompletion)(NSDictionary * __nullable jsonResp
 @optional
 /**
  Asyncronosuly sends the JSON-RPC request payload object and returns the result object
- @param jsonRPCRequest The serialized JSON data for the JSON-RPC request object
+ @param jsonRPCRequest The unserialized JSON data for the JSON-RPC request object
  @param completionQueue A dispatch queue that will be used to call the completion block. Should accept nil for use of dispatch_get_main_queue()
  @param completion A block that will be called woth the result of the JSON-RPC request
+ @return an object conforming to JRPCCacnellable which may be used to cancel the request (if supported)
  */
-- (void) sendJSONRPCPayloadWithRequestObject:(NSDictionary*)jsonRPCRequest
+- (id<JRPCCancellable>) sendJSONRPCPayloadWithRequestObject:(NSDictionary*)jsonRPCRequest
                              completionQueue:(dispatch_queue_t __nullable)completionQueue
                                   completion:(JRPCTransportObjectCompletion)completion;
 
@@ -72,8 +73,9 @@ typedef void (^JRPCTransportObjectCompletion)(NSDictionary * __nullable jsonResp
  @param payload The serialized JSON data for the JSON-RPC request object
  @param completionQueue A dispatch queue that will be used to call the completion block. Should accept nil for use of dispatch_get_main_queue()
  @param completion A block that will be called woth the result of the JSON-RPC request
+ @return an object conforming to JRPCCacnellable which may be used to cancel the request (if supported)
  */
-- (void) sendJSONRPCPayloadWithRequestData:(NSData*)payload
+- (id<JRPCCancellable>) sendJSONRPCPayloadWithRequestData:(NSData*)payload
                            completionQueue:(dispatch_queue_t __nullable)completionQueue
                                 completion:(JRPCTransportDataCompletion)completion;
 

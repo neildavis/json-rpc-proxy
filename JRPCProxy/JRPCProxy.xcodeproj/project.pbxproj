@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180324AA25F63BEC0096919F /* JRPCCancellable.h in Headers */ = {isa = PBXBuildFile; fileRef = 180324A925F63BEC0096919F /* JRPCCancellable.h */; };
+		180324B125F6432C0096919F /* JRPCURLSessionTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 180324AF25F6432C0096919F /* JRPCURLSessionTransport.h */; };
+		180324B225F6432C0096919F /* JRPCURLSessionTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 180324B025F6432C0096919F /* JRPCURLSessionTransport.m */; };
 		1831B0F31F92AE590001DF1E /* JRPCProxySerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1831B0F21F92AE590001DF1E /* JRPCProxySerializationTests.m */; };
 		183F1C4F1FA363F000F2E544 /* JRPCProxyTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 183F1C4E1FA363F000F2E544 /* JRPCProxyTransport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		183F1C511FA3657A00F2E544 /* JRPCTransformable.h in Headers */ = {isa = PBXBuildFile; fileRef = 183F1C501FA3657A00F2E544 /* JRPCTransformable.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -39,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		180324A925F63BEC0096919F /* JRPCCancellable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JRPCCancellable.h; sourceTree = "<group>"; };
+		180324AF25F6432C0096919F /* JRPCURLSessionTransport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JRPCURLSessionTransport.h; sourceTree = "<group>"; };
+		180324B025F6432C0096919F /* JRPCURLSessionTransport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JRPCURLSessionTransport.m; sourceTree = "<group>"; };
 		1831B0F21F92AE590001DF1E /* JRPCProxySerializationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JRPCProxySerializationTests.m; sourceTree = "<group>"; };
 		183F1C4E1FA363F000F2E544 /* JRPCProxyTransport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JRPCProxyTransport.h; sourceTree = "<group>"; };
 		183F1C501FA3657A00F2E544 /* JRPCTransformable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JRPCTransformable.h; sourceTree = "<group>"; };
@@ -132,8 +138,11 @@
 				183F1C501FA3657A00F2E544 /* JRPCTransformable.h */,
 				18AE5A591F8A9D8E00DC0788 /* JRPCError.h */,
 				18AE5A5A1F8A9D8E00DC0788 /* JRPCError.m */,
+				180324A925F63BEC0096919F /* JRPCCancellable.h */,
 				1843BB6E1F927043005A241C /* NSDictionary+JSONRPC.h */,
 				1843BB6F1F927043005A241C /* NSDictionary+JSONRPC.m */,
+				180324AF25F6432C0096919F /* JRPCURLSessionTransport.h */,
+				180324B025F6432C0096919F /* JRPCURLSessionTransport.m */,
 				44F5D7E31F87E2B200BB4517 /* Info.plist */,
 			);
 			path = JRPCProxy;
@@ -165,8 +174,10 @@
 			files = (
 				1843BB701F927043005A241C /* NSDictionary+JSONRPC.h in Headers */,
 				18AE5A5B1F8A9D8E00DC0788 /* JRPCError.h in Headers */,
+				180324B125F6432C0096919F /* JRPCURLSessionTransport.h in Headers */,
 				183F1C511FA3657A00F2E544 /* JRPCTransformable.h in Headers */,
 				183F1C4F1FA363F000F2E544 /* JRPCProxyTransport.h in Headers */,
+				180324AA25F63BEC0096919F /* JRPCCancellable.h in Headers */,
 				44F5D7FB1F87E36100BB4517 /* JRPCAbstractProxy.h in Headers */,
 				44F5D7F01F87E2B300BB4517 /* JRPCProxy.h in Headers */,
 			);
@@ -274,6 +285,7 @@
 				18AE5A5C1F8A9D8E00DC0788 /* JRPCError.m in Sources */,
 				1843BB711F927043005A241C /* NSDictionary+JSONRPC.m in Sources */,
 				44F5D7FC1F87E36100BB4517 /* JRPCAbstractProxy.m in Sources */,
+				180324B225F6432C0096919F /* JRPCURLSessionTransport.m in Sources */,
 				18AE5A541F8A8AFA00DC0788 /* CTBlockDescription.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

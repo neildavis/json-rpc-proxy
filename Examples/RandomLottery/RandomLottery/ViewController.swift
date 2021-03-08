@@ -30,13 +30,14 @@
 import UIKit
 import JRPCProxy
 
-class ViewController: UIViewController, JRPCProxyTransport {
+class ViewController: UIViewController {
 
     @IBOutlet weak var ballSelectionView: BallSelectionView!
     @IBOutlet weak var maxNumberSlider: UISlider!
     @IBOutlet weak var maxNumberLabel: UILabel!
     
     var randomService :AnyObject! = nil
+    var randomServiceTransport: JRPCURLSessionTransport! = nil
     let apiKey :String
     let defaultMaxNumber :Int = 59;
     
@@ -49,7 +50,8 @@ class ViewController: UIViewController, JRPCProxyTransport {
             self.apiKey = ""
         }
         super.init(coder: aDecoder)
-        randomService = (JRPCAbstractProxy.proxy(for: RandomDotOrgService.self, paramStructure: .byName, transport: self) as AnyObject)
+        randomServiceTransport = JRPCURLSessionTransport(urlSession: nil, url: URL(string: "https://api.random.org/json-rpc/1/invoke")!)
+        randomService = (JRPCAbstractProxy.proxy(for: RandomDotOrgService.self, paramStructure: .byName, transport: randomServiceTransport) as AnyObject)
     }
     
     //MARK: UIViewController overrides
@@ -102,28 +104,5 @@ class ViewController: UIViewController, JRPCProxyTransport {
             }
         })
     }
-    
-    //MARK: JRPCProxyTransport
-    
-    func sendJSONRPCPayload(withRequest payload: Data, completionQueue: DispatchQueue?, completion: @escaping JRPCTransportDataCompletion) {
-        // Fire off a request to random.org over via JSON-RPC over HTTPS
-        var request = URLRequest(url: URL(string: "https://api.random.org/json-rpc/1/invoke")!)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
-        request.httpBody = payload
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            var dispatchQueue :DispatchQueue! = nil;
-            if let queue = completionQueue {
-                dispatchQueue = queue
-            }
-            else {
-                dispatchQueue = DispatchQueue.main
-            }
-            dispatchQueue.async {
-                completion(data, error)
-            }
-        }
-        task.resume()
-     }
 }
 
