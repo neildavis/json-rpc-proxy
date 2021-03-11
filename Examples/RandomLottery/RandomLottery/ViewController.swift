@@ -90,8 +90,7 @@ class ViewController: UIViewController {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true;
         self.randomService?.generateIntegers(apiKey: apiKey, n: 6,
                                              min: BallView.minBallNumber, max: Int(self.maxNumberSlider.value),
-                                             replacement: false,
-                                             completion: { [weak self] (newNumbers, error) in
+                                             replacement: false) { [weak self] (newNumbers, error) in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false;
             guard let self = self else { return }
 
@@ -102,7 +101,7 @@ class ViewController: UIViewController {
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-        })
+        }
     }
 }
 
